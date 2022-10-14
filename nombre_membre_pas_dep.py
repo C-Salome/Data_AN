@@ -23,7 +23,7 @@ for filename in glob.glob('/Users/salomecolza/desktop/These_Hugo/AMO30_tous_acte
             ref = i.find("organeRef")
             id_instance = ref.get_text()
 
-            if id_fonction == "membre" and (id_instance != 'PO230434' or id_instance != 'PO384266' or id_instance != 'PO644420' or id_instance != 'PO717460' ):
+            if id_fonction == "membre" and (id_instance != 'PO230434' or id_instance != 'PO384266' or id_instance != 'PO644420' or id_instance != 'PO717460' or id_instance != 'PO791932'):
 
                 ref = i.find("acteurRef")
                 id_indiv = ref.get_text()

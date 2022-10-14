@@ -6,7 +6,7 @@ import os
 col = ["id_indiv",'id_territoire','id_legis','id_mandat','id_inves','id_motif_deb','id_motif_fin','remporte','id_suppleant','date_deb','date_fin']
 res = []
 
-for filename in glob.glob('/Users/salomecolza/desktop/These_Hugo/AMO10_deputes_actifs_mandats_actifs_organes_XVI/acteur/*.xml'):
+for filename in glob.glob('/Users/salomecolza/desktop/These_Hugo/AMO30_tous_acteurs_tous_mandats_tous_organes_historique_v2/acteur/*.xml'):
     with open(os.path.join(os.getcwd(), filename), 'r') as file:
         soup = BeautifulSoup(file,"xml")
 
@@ -23,9 +23,7 @@ for filename in glob.glob('/Users/salomecolza/desktop/These_Hugo/AMO10_deputes_a
             ref = i.find("organeRef")
             id_instance = ref.get_text()
 
-            if id_fonction == "membre" and (id_instance == 'PO230434' or id_instance == 'PO384266' or id_instance == 'PO644420' or id_instance == 'PO717460' ):
-
-                print("Le IF est vrai")
+            if id_fonction == "membre" and (id_instance == 'PO230434' or id_instance == 'PO384266' or id_instance == 'PO644420' or id_instance == 'PO717460' or id_instance == 'PO791932'):
 
                 ref = i.find("acteurRef")
                 id_indiv = ref.get_text()
@@ -115,6 +113,6 @@ for filename in glob.glob('/Users/salomecolza/desktop/These_Hugo/AMO10_deputes_a
     file.close()
 
 out_df = pd.DataFrame(res, columns = col)
-out_df.to_csv('/Users/salomecolza/desktop/These_Hugo/export_df_candidats_XVI.csv', index = False, header=True, columns= col)
+out_df.to_excel('/Users/salomecolza/desktop/These_Hugo/export_df_candidats_XVI.xlsx', index = False, header=True, columns= col, encoding= 'utf-8')
 
 print(len(res))
